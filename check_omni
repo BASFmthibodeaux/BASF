@@ -1,0 +1,13 @@
+#!/bin/bash
+#created by joro
+#BASF data-protector created
+#for HPSA only
+
+check=`df -hT|grep /opt/omni |awk {'print $7'}`
+
+if [ $check == "/opt/omni/bin/drim/tmp" ]
+ then
+  df -hT|grep /opt/omni |awk {'print $1 "\t" $2 "\t" $3 "\t" $7'}
+ else
+  echo "maintanace"
+fi
