@@ -3,11 +3,11 @@
 #BASF data-protector created
 #for HPSA only
 
-check=`df -hT|grep /opt/omni/bin/drim/tmp |awk '{print $7}'`
+check=`df -hT|grep /opt/omni/bin/drim/tmp|awk {'print '$6'}`
 
 if [ $check == "/opt/omni/bin/drim/tmp" ]
  then
-  df -hT|grep /opt/omni |awk '{print $1 "\t" $2 "\t" $3 "\t" $7}'
+  df -hT /opt/omni/bin/drim/tmp
  else
   echo "maintanace is needed"
 fi
