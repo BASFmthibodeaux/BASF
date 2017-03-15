@@ -3,7 +3,7 @@
 #BASF data-protector created
 #for HPSA only
 
-check=`df -hT|grep /opt/omni |awk '{print $7}'`
+check=`df -hT|grep /opt/omni/bin/drim/tmp |awk '{print $7}'`
 
 if [ $check == "/opt/omni/bin/drim/tmp" ]
  then
