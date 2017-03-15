@@ -8,3 +8,12 @@ if [ $check="/opt/omni/bin/drim/tmp" ]
  else
   echo "maintanace is needed"
 fi
+#test utre
+check=`cat /etc/fstab | grep /opt/omni |awk {'print $2'}`
+
+if [ $check="/opt/omni/bin/drim/tmp" ]
+ then
+  echo "good"
+ else
+  vgs && df -h /
+fi
