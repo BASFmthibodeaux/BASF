@@ -2,8 +2,7 @@
 
 
 check=`df -hT|grep /opt/omni/bin/drim/tmp|awk {'print '$6'}`
-
-if [ $check == "/opt/omni/bin/drim/tmp" ]
+if [ $check="/opt/omni/bin/drim/tmp" ]
  then
   df -hT /opt/omni/bin/drim/tmp
  else
