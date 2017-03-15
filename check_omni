@@ -1,7 +1,5 @@
 #!/bin/bash
-#created by joro
-#BASF data-protector created
-#for HPSA only
+
 
 check=`df -hT|grep /opt/omni/bin/drim/tmp|awk {'print '$6'}`
 
