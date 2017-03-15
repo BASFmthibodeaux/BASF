@@ -7,5 +7,5 @@ if [ $check!="/opt/omni/bin/drim/tmp" ]
  then
   vgs && df -h /
  else
-  df -hT|grep /opt/omni |awk '{print $1 "  " $2 "  " $3 "   " $7}'
+  df -hT /opt/omni/bin/drim/tmp
 fi
