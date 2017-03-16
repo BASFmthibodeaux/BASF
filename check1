@@ -1,0 +1,9 @@
+#!/bin/bash
+check=`cat /etc/fstab | grep /opt/omni |awk {'print $2'}`
+check1="/opt/omni/bin/drim/tmp"
+if [ $"check"==$"check1" ]
+ then
+  echo "good"
+ else
+  vgs && df -h / |awk print '{print $4}'
+fi
