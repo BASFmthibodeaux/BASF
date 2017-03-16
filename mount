@@ -4,6 +4,7 @@ export MOUNT=/opt/omni/bin/drim/tmp
 if grep -qs $MOUNT /proc/mounts; then
   echo "It's mounted."
 else
- vgs && df -h / 
-  mount $MOUNT;
+# vgs && df -h / 
+ # mount $MOUNT;
+echo "Not mounted" 
 fi
