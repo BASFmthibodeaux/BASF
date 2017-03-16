@@ -1,0 +1,9 @@
+#!/bin/bash
+export MOUNT=/opt/omni/bin/drim/tmp
+
+if grep -qs $MOUNT /proc/mounts; then
+  echo "It's mounted."
+else
+ vgs && df -h / |awk print '{print $4}'
+  mount $MOUNT;
+fi
