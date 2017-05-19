@@ -1,0 +1,21 @@
+#!/bin/bash
+
+export mount=/opt/omni/bin/drim/tmp
+
+#if grep -qs $MOUNT /proc/mounts
+
+#then
+echo $mount
+mkdir -p $mount
+
+lvcreate $1 -n $2 -L 50M
+
+yes | mkfs.ext4 /dev/$1/$2
+
+mount /dev/$1/$2 $mount
+
+
+
+#fi
+
+df -hT
