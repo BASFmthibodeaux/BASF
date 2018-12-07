@@ -1,5 +1,0 @@
-df -hT|grep /opt/omni |awk {'print $1 "\t" $2 "\t" $3 "\t" $7'}
-
-df -hT|grep /opt/omni |awk {'print $5'}
-
-df -hT /|awk {'print $5'}|tail -1|cut -c1-2
