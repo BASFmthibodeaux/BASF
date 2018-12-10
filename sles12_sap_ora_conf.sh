@@ -22,6 +22,7 @@ cp -fr  /$OLDSLES/$CONF/shadow /$CONF/shadow
 echo "root:sles11to12" |chpasswd 
 cp -fr  /$OLDSLES/$CONF/services /$CONF/services
 cp -fr  /$OLDSLES/$CONF/auto.master /$CONF/auto.master
+cp -fr  /$OLDSLES/root/scripts/ /root/scripts/
 cp -fr  /$OLDSLES/opt/special/ /opt/special/ && ln -s /opt/special/  /special/
 
 #check if oracles DB is installed and running
