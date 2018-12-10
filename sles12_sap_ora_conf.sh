@@ -45,7 +45,7 @@ do
 if [ -f /etc/sysconfig/network/ifcfg-eth$p ]
  then 
    ls -la  /$OLDSLES/etc/sysconfig/network/ifcfg-eth$p
-   cp -fr  /$OLDSLES/etc/sysconfig/network/ /etc/sysconfig/network/ &&
+   rsync -avz  /$OLDSLES/etc/sysconfig/network/ /etc/sysconfig/network/ &&
    systemctl restart network
   else
     echo "names are difrent"
