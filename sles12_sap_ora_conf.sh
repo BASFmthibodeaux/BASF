@@ -63,12 +63,12 @@ diff /$CONF/passwd         /$OLDSLES/$CONF/passwd       >> $LOG
 diff /$CONF/shadow         /$OLDSLES/$CONF/shadow       >> $LOG
 diff /$CONF/services       /$OLDSLES/$CONF/services     >> $LOG
 diff /$CONF/auto.master    /$OLDSLES/$CONF/auto.master  >> $LOG
-p=$(wc -l $LOG)
-if [ $p -eq "0" ]
+
+if [ -s $LOG ]
  then 
-   reboot
+   cat $LOG
   else 
- cat $LOG
+ reboot
 fi 
  
 
