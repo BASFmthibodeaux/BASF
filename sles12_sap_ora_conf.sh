@@ -19,7 +19,7 @@ cp -fr  /$OLDSLES/$CONF/sysctl.conf  /$CONF/sysctl.conf
 cp -fr  /$OLDSLES/$CONF/resolv.conf  /$CONF/resolv.conf
 cp -fr  /$OLDSLES/$CONF/passwd  /$CONF/passwd
 cp -fr  /$OLDSLES/$CONF/shadow /$CONF/shadow
-echo "root:gohelion" |chpasswd 
+echo "root:sles11to12" |chpasswd 
 cp -fr  /$OLDSLES/$CONF/services /$CONF/services
 cp -fr  /$OLDSLES/$CONF/auto.master /$CONF/auto.master
 cp -fr  /$OLDSLES/opt/special/ /opt/special/ && ln -s /opt/special/  /special/
