@@ -1,10 +1,14 @@
 #!/bin/bash
 #created by Georgi Dimitrov
 
-echo "$1 is a old vg name"
-echo "$2 is a new vg name"
+#echo "$1 is a old vg name"
+#echo "$2 is a new vg name"
+read old_vg
+read new_vg
+echo $old_vg
+echo $new_vg
 
-vgrename $1 $2
+vgrename $old_gv $new_vg
 
 cp /etc/fstab /etc/fstab.back
 sed -i "s/$1/$2/" /etc/fstab
