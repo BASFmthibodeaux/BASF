@@ -11,10 +11,10 @@ mount /dev/$1/home /$OLDSLES/usr2/local/
 
 
 #transfer inportant files and configuration
-cp -fr  /$OLDSLES/usr/local/bin/  /usr/local/bin/
-cp -fr  /$OLDSLES/$CONF/ssh/ /$CONF/ssh/
+rsync -avz  /$OLDSLES/usr/local/bin/  /usr/local/bin/
+rsync -avz  /$OLDSLES/$CONF/ssh/ /$CONF/ssh/
 rsync -avz  /$OLDSLES/$CONF/BASFfirewall.d/ /$CONF/BASFfirewall.d/
-cp -fr  /$OLDSLES/root/.ssh/ /root/.ssh/
+rsync -avz  /$OLDSLES/root/.ssh/ /root/.ssh/
 cp -fr  /$OLDSLES/$CONF/sysctl.conf  /$CONF/sysctl.conf
 cp -fr  /$OLDSLES/$CONF/resolv.conf  /$CONF/resolv.conf
 cp -fr  /$OLDSLES/$CONF/passwd  /$CONF/passwd
@@ -22,8 +22,8 @@ cp -fr  /$OLDSLES/$CONF/shadow /$CONF/shadow
 echo "root:sles11to12" |chpasswd 
 cp -fr  /$OLDSLES/$CONF/services /$CONF/services
 cp -fr  /$OLDSLES/$CONF/auto.master /$CONF/auto.master
-cp -fr  /$OLDSLES/root/scripts/ /root/scripts/
-cp -fr  /$OLDSLES/opt/special/ /opt/special/ && ln -s /opt/special/  /special/
+rsync -avz  /$OLDSLES/root/scripts/ /root/scripts/
+rsync -avz  /$OLDSLES/opt/special/ /opt/special/ && ln -s /opt/special/  /special/
 
 #check if oracles DB is installed and running
 
