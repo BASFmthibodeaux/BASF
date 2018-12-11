@@ -44,7 +44,7 @@ fi
 #setup network
 for p in {0..1}
 do 
-if [ -f /etc/sysconfig/network/ifcfg-eth$p ]
+if [ -f /$CONF/sysconfig/network/ifcfg-eth$p ]
  then 
    ls -la  /$OLDSLES/$CONF/sysconfig/network/ifcfg-eth$p
    rsync -avz  /$OLDSLES/$CONF/sysconfig/network/ /$CONF/sysconfig/network/ &&
