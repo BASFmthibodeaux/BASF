@@ -9,7 +9,7 @@ mount /dev/$1/tmp /$OLDSLES/tmp/
 mount /dev/$1/home /$OLDSLES/usr2/local/
 
 #adding Autprized volumes to fstab
-grep -i "xfs" /$OLDSLES/etc/fstab >> /etc/fstab
+grep -i "xfs" /$OLDSLES/$CONF/fstab >> /$CONF/fstab
 
 #transfer inportant files and configuration
 rsync -avz  /$OLDSLES/usr/local/bin/  /usr/local/bin/
