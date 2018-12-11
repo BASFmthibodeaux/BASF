@@ -8,7 +8,8 @@ mount /dev/$1/opt /$OLDSLES/opt/
 mount /dev/$1/tmp /$OLDSLES/tmp/
 mount /dev/$1/home /$OLDSLES/usr2/local/
 
-
+#adding Autprized volumes to fstab
+grep -i "xfs" /$OLDSLES/etc/fstab >> /etc/fstab
 
 #transfer inportant files and configuration
 rsync -avz  /$OLDSLES/usr/local/bin/  /usr/local/bin/
@@ -29,10 +30,10 @@ rsync -avz  /$OLDSLES/opt/special/ /opt/special/ && ln -s /opt/special/  /specia
 
 if [ -f /$OLDSLES/etc/oratab ]
  then
-   cp -fr  /$OLDSLES/etc/oratab /etc/oratab
-   if  [ -f /$OLDSLES/etc/orainst.loc ]
+   cp -fr  /$OLDSLES/$CONF/oratab /etc/oratab
+   if  [ -f /$OLDSLES/$CONF/orainst.loc ]
   then
-    cp -fr  /$OLDSLES/etc/orainst.loc /etc/orainst.loc
+    cp -fr  /$OLDSLES/$CONF/orainst.loc /$CONF/orainst.loc
   else
     echo "there is not orainst.loc"
   fi
@@ -45,8 +46,8 @@ for p in {0..1}
 do 
 if [ -f /etc/sysconfig/network/ifcfg-eth$p ]
  then 
-   ls -la  /$OLDSLES/etc/sysconfig/network/ifcfg-eth$p
-   rsync -avz  /$OLDSLES/etc/sysconfig/network/ /etc/sysconfig/network/ &&
+   ls -la  /$OLDSLES/$CONF/sysconfig/network/ifcfg-eth$p
+   rsync -avz  /$OLDSLES/$CONF/sysconfig/network/ /$CONF/sysconfig/network/ &&
    systemctl restart network
   else
     echo "names are difrent"
