@@ -16,6 +16,7 @@ rsync -avz  /$OLDSLES/usr/local/bin/  /usr/local/bin/
 rsync -avz  /$OLDSLES/$CONF/ssh/ /$CONF/ssh/
 rsync -avz  /$OLDSLES/$CONF/BASFfirewall.d/ /$CONF/BASFfirewall.d/
 rsync -avz  /$OLDSLES/root/.ssh/ /root/.ssh/
+cp -fr  /$OLDSLES/$CONF/hosts  /$CONF/hosts
 cp -fr  /$OLDSLES/$CONF/sysctl.conf  /$CONF/sysctl.conf
 cp -fr  /$OLDSLES/$CONF/resolv.conf  /$CONF/resolv.conf
 cp -fr  /$OLDSLES/$CONF/passwd  /$CONF/passwd
