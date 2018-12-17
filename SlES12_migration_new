@@ -55,7 +55,8 @@ if [ -f /etc/sysconfig/network/ifcfg-eth$p ]
     echo "names are difrent"
  fi
 done
-
+#set hostname
+hostnamectl set-hostname $2
 #check
 diff /$CONF/sysctl.conf    /$OLDSLES/$CONF/sysctl.conf  >> $LOG
 diff /$CONF/resolv.conf    /$OLDSLES/$CONF/resolv.conf  >> $LOG
