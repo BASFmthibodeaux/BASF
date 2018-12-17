@@ -1,12 +1,8 @@
 #!/bin/bash
 #created by Georgi Dimitrov
 
-#echo "$1 is a old vg name"
-#echo "$2 is a new vg name"
-read old_vg
-read new_vg
-echo $old_vg
-echo $new_vg
+echo "$1 is a old vg name"
+echo "$2 is a new vg name"
 
 vgrename $old_gv $new_vg
 
