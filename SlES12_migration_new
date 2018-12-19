@@ -4,6 +4,7 @@
 CONF=etc
 OLDSLES=mnt
 LOG=set_configuration.log
+COMMAND=$(systemctl)
 
 #mount suse11 disk in the /mnt
 mount /dev/$1/root /$OLDSLES/
@@ -22,6 +23,11 @@ cp -fr  /$OLDSLES/$CONF/sysctl.conf  /$CONF/sysctl.conf
 cp -fr  /$OLDSLES/$CONF/resolv.conf  /$CONF/resolv.conf
 cp -fr  /$OLDSLES/$CONF/passwd  /$CONF/passwd
 cp -fr  /$OLDSLES/$CONF/shadow /$CONF/shadow
+cp -fr  /$OLDSLES/$CONF/auto.master /$CONF/auto.master
+cp -fr  /$OLDSLES/$CONF/auto.apps /$CONF/auto.apps
+cp -fr  /$OLDSLES/$CONF/nscd.conf /$CONF/nscd.conf
+#set rpcbind user
+echo "rpc:x:495:65534:user for rpcbind:/var/lib/empty:/sbin/nologin" >> /$CONF/passwd
 echo "root:sles11to12" |chpasswd
 cp -fr  /$OLDSLES/$CONF/services /$CONF/services
 cp -fr  /$OLDSLES/$CONF/auto.master /$CONF/auto.master
@@ -55,8 +61,21 @@ if [ -f /etc/sysconfig/network/ifcfg-eth$p ]
     echo "names are difrent"
  fi
 done
+#local host set
+echo 'ypserver localhost' > /etc/yp.conf
+echo 'basfad.basf.net' > /etc/defaultdomain
+domainname $( cat /etc/defaultdomain )
+
 #set hostname
 hostnamectl set-hostname $2
+#set corect services boot with OS
+$COMMAND enable rpcbind
+$COMMAND enable nscd
+$COMMAND enable ypbind
+$COMMAND enable vasd
+$COMMAND enable vasypd
+$COMMAND enable autofs
+
 #check
 diff /$CONF/sysctl.conf    /$OLDSLES/$CONF/sysctl.conf  >> $LOG
 diff /$CONF/resolv.conf    /$OLDSLES/$CONF/resolv.conf  >> $LOG
@@ -64,6 +83,9 @@ diff /$CONF/passwd         /$OLDSLES/$CONF/passwd       >> $LOG
 diff /$CONF/shadow         /$OLDSLES/$CONF/shadow       >> $LOG
 diff /$CONF/services       /$OLDSLES/$CONF/services     >> $LOG
 diff /$CONF/auto.master    /$OLDSLES/$CONF/auto.master  >> $LOG
+#read
+echo "Check diferrences betwen fstabs and cofigure corectly."
+read
 
 if [ -s $LOG ]
  then
