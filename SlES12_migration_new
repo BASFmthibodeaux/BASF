@@ -84,7 +84,7 @@ diff /$CONF/shadow         /$OLDSLES/$CONF/shadow       >> $LOG
 diff /$CONF/services       /$OLDSLES/$CONF/services     >> $LOG
 diff /$CONF/auto.master    /$OLDSLES/$CONF/auto.master  >> $LOG
 #read
-echo "Check diferrences betwen fstabs and cofigure corectly."
+echo "Check diferrences betwen fstabs and cofigure corectly\n Check autofs configuration too\n"
 read
 
 if [ -s $LOG ]
